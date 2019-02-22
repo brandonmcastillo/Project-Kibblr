@@ -1,4 +1,6 @@
-/* Global Styles */
+/*************
+ Global Styles
+ *************/
 
 html,
 body,
@@ -6,10 +8,10 @@ footer {
     height: 100%;
     width: 100%;
     scroll-behavior: smooth;
-    background: #eee !important;
+    background: #FFFFFF;
     text-align: center;
     margin: auto 0;
-    font-family: 'raleway', 'sans-serif';
+    font-family: 'Nunito', 'sans-serif';
     text-align: center;
 }
 
@@ -18,20 +20,52 @@ footer {
 .form-group {
     margin: auto;
 }
-/* Header and Nav Bar */
+
+/******************
+ Header and Nav Bar
+ ******************/
+
+.container-fluid.kibblr-top-nav {
+    padding-left: 0;
+    height: 30px;
+}
 
 .navbar-nav {
     display: flex;
     flex-direction: row;
 }
 
+a >
+img.tennis-ball-one {
+    width: 40px;
+    height: auto;
+    position: relative;
+    top: 20px;
+    left: 5px;
+}
+
 .nav-link {
     padding: .5rem 1rem !important;
+    color: #FFFFFF;
+    text-transform: uppercase;
 }
 /* Layout for index.html */
 
 .navbar {
     margin-bottom: 10em;
+}
+
+.navbar.kibblr-top-nav {
+    background: #8BCFB7;
+    width: 100vw;
+    height: 45px;
+}
+
+/*Search Bar*/
+section.mainSearch {
+    background: #F5F2EC;
+    margin-top: 0px;
+    padding-top: 50px;
 }
 
 .mainSearch,
