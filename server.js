@@ -101,7 +101,10 @@ app.put('/api/user/:id', (req, res) => {
     let userId = req.params.id;
     console.log(userId);
     db.User.findOneAndUpdate({ _id: userId }, req.body, (err, updatedUser) => {
-        console.log(updatedUser);
+        if (err) {
+            return console.log('error', err);
+        }
+        console.log('updated user', updatedUser);
         res.json(updatedUser);
     });
 });
