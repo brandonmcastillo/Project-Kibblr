@@ -35,12 +35,13 @@ $(function() {
                     $('.append-id').prepend(`
                     <hr>
                     <div>
-                        <h2>My Rating: ${review.rating}, Because: ${review.text}</h2>
+                        <h2 class="save">My Rating: ${review.rating}, Because: ${review.text}</h2>
                         <button type="button" name="button" class="review-button-delete btn pull-right" data-id=${review._id}>Delete</button>
-                        <button type="button" class="review-button-edit btn pull-right" data-id="${review._id}">Edit</button>
+                        <button type="button" name="button" class="review-button-edit btn pull-right" data-id="${review._id}">Edit</button>
 
                         <form class="edit-input" style="display: none" data-id="${review._id}">
-                            <input type="text" name="title" value="" />                            <button type="submit" class="review-button-edit-save">Save</button>
+                            <input type="text" name="title" value="" />                            
+                            <button type="button" name="button" class="review-button-edit-save btn pull-right" data-id="${review._id}">Edit</button>
                         </form>
                     </div>`);
                 })
@@ -127,7 +128,7 @@ $(function() {
                 <div>
                     <h2> My Rating: ${json.rating} <br> Reason for my rating: ${json.text}</h2>
                     <button type="button" name="button" class="review-button-delete btn" >Delete</button>
-                    <button type="button" nameclass="review-button-edit btn">Edit</button>
+                    <button type="button" name="button" class="review-button-edit btn">Edit</button>
 
                     <form class="edit-input" style="display: none" data-id="${review._id}">
                     <input type="text" name="input" value="Review" />
@@ -168,18 +169,27 @@ $(function() {
 
     $('.append-id').on('click', '.review-button-edit', function(e) {
         e.preventDefault();
-        console.log("edit button clicked")
+        console.log("edit button clicked, review form shows")
+        $(this).parent().find(".edit-input").show();  
+    })
+
+    $('.append-id').on('click', '.review-button-edit-save', function(e) {
+        // e.preventDefault();
+        $(this).parent().hide();
+        console.log(`clicked on review button edit save`)
+        let updatedReview = $(this).find("input").val();
         $.ajax({
             method: 'PUT',
-            url: "/api/review/" +$(this).attr('data-id'),
+            url: "/api/review/" + $(this).attr('data-id'),
+            data: { text: updatedReview },
             success: editSuccess,
             error: (err) => console.log(' Could not edit this review', err)
         })
     })
 
-    function editSuccess(json) {
-        console.log(`the edit Success fxn works`)
-        $(this).parent().find(".review-button-edit-save").show();
+    function editSuccess(review) {
+        console.log('edit successful server res')
+        $(this).parent().parent().find('.save').html(review.text);
     }
 
 
