@@ -9,13 +9,7 @@ Link to project on github
 https://github.com/brandonmcastillo/Project-Kibblr
 
 ## Technology Used
-HTML
-CSS
-jQuery
-Node.js
-Express
-Mongoose
-MongoDB
+HTML, CSS, jQuery, Node.js/Express, MongoDB/Mongoose
 
 ## Notable Features
 - user login / signup
